@@ -77,6 +77,7 @@ const AuthContext = ({ children }) => {
     deleteTheUser,
     user,
   };
+  console.log(user);
 
   return (
     <AuthContextAPI.Provider value={authentication}>

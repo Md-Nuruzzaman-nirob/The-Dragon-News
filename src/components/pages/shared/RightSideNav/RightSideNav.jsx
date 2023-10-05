@@ -9,17 +9,43 @@ import QZone1 from "../../../../assets/qZone1.png";
 import QZone2 from "../../../../assets/qZone2.png";
 import QZone3 from "../../../../assets/qZone3.png";
 import bg from "../../../../assets/bg.png";
+import useAuthContext from "../../../../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const RightSideNav = () => {
+  // context
+  const { googleLogin, githubLogin } = useAuthContext();
+
+  // use Navigate
+  const navigate = useNavigate();
+
+  const handleSocialLogin = (socialLogin) => {
+    socialLogin()
+      .then(() => {
+        toast.success("Sign In successfully");
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <div className="mb-8">
         <h2 className="text-xl font-semibold mb-5">Login With</h2>
-        <button className="w-full btn btn-outline text-blue-500 hover:text-white hover:bg-blue-500 hover:border-none mb-3">
+        <button
+          onClick={() => handleSocialLogin(googleLogin)}
+          className="w-full btn btn-outline text-blue-500 hover:text-white hover:bg-blue-500 hover:border-none mb-3"
+        >
           <FaGoogle></FaGoogle>
           <span className="hidden lg:flex">Login With</span> Google
         </button>
-        <button className="w-full flex btn btn-outline">
+        <button
+          onClick={() => handleSocialLogin(githubLogin)}
+          className="w-full flex btn btn-outline"
+        >
           <FaGithub></FaGithub>{" "}
           <span className="hidden lg:flex">Login With</span> Github
         </button>
@@ -30,18 +56,27 @@ const RightSideNav = () => {
         <h2 className="text-xl font-semibold mb-5">Find Us On</h2>
         <a
           className="flex items-center gap-2 p-4 border-2 rounded-t-lg"
-          href=""
+          href="https://www.facebook.com/"
+          target="_blank"
+          rel="noreferrer"
         >
           <FaFacebook></FaFacebook>{" "}
           <span className="hover:underline">Facebook</span>
         </a>
-        <a className="flex items-center gap-2 p-4 border-x-2" href="">
+        <a
+          className="flex items-center gap-2 p-4 border-x-2"
+          href="https://twitter.com/"
+          target="_blank"
+          rel="noreferrer"
+        >
           <FaTwitter></FaTwitter>{" "}
           <span className="hover:underline">Twitter</span>
         </a>
         <a
           className="flex items-center gap-2 p-4 border-2 rounded-b-lg"
-          href=""
+          href="https://www.instagram.com/"
+          target="_blank"
+          rel="noreferrer"
         >
           <FaInstagram></FaInstagram>{" "}
           <span className="hover:underline">Instagram</span>
