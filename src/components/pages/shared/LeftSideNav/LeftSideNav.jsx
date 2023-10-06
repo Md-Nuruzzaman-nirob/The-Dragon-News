@@ -7,14 +7,14 @@ const LeftSideNav = () => {
 
   // use effect
   useEffect(() => {
-    fetch("../../../../../public/json/categories.json")
+    fetch("/categories.json")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
   return (
     <div>
       <h2 className="text-xl font-semibold mb-5">All Category</h2>
-      {categories.map((category) => {
+      {categories?.map((category) => {
         return (
           <Link
             className={`block text-lg font-medium px-10 py-4 ${({

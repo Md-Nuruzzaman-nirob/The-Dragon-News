@@ -31,7 +31,7 @@ const HomePage = () => {
           <LeftSideNav></LeftSideNav>
         </div>
         <div className="col-span-2">
-          {allNews.map((news) => (
+          {allNews?.map((news) => (
             <NewsCard key={news._id} news={news}></NewsCard>
           ))}
         </div>

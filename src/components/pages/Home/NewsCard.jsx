@@ -26,8 +26,8 @@ const NewsCard = ({ news }) => {
           <div className="flex items-start gap-4">
             <img className="w-10 h-10 rounded-full" src={author?.img} alt="" />
             <div className="">
-              <h3 className="font-semibold">{author.name}</h3>
-              <h4 className="text-sm">{author.published_date}</h4>
+              <h3 className="font-semibold">{author?.name}</h3>
+              <h4 className="text-sm">{author?.published_date}</h4>
             </div>
           </div>
           <div className="flex items-center gap-2">

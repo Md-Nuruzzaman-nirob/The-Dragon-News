@@ -16,7 +16,7 @@ const AppRouter = createBrowserRouter([
       {
         path: "/",
         element: <HomePage></HomePage>,
-        loader: () => fetch("/public/json/news.json"),
+        loader: () => fetch("/news.json"),
       },
       {
         path: "/login",
@@ -34,7 +34,7 @@ const AppRouter = createBrowserRouter([
             <NewsPage></NewsPage>
           </PrivetRouter>
         ),
-        loader: () => fetch("/public/json/news.json"),
+        loader: () => fetch("/news.json"),
       },
     ],
   },

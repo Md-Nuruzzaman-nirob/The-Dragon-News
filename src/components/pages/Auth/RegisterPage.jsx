@@ -25,8 +25,8 @@ const RegisterPage = () => {
   const navigate = useNavigate();
 
   //onchange Name
-  const handleInputName = (e) => {
-    const name = e.target.value;
+  const handleInputName = (event) => {
+    const name = event.target.value;
 
     if (name.length < 5) {
       setNameError("Name should be at least 5 characters");
@@ -37,8 +37,8 @@ const RegisterPage = () => {
   };
 
   //Onchange Email
-  const handleInputEmail = (e) => {
-    const email = e.target.value;
+  const handleInputEmail = (event) => {
+    const email = event.target.value;
 
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
       setEmailError("Please enter a valid email address.");
@@ -48,8 +48,8 @@ const RegisterPage = () => {
   };
 
   //Onchange Password
-  const handleInputPassword = (e) => {
-    const password = e.target.value;
+  const handleInputPassword = (event) => {
+    const password = event.target.value;
 
     if (password.length < 6) {
       return setPasswordError("Password should be at least 6 characters");

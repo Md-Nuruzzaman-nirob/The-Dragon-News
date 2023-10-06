@@ -66,9 +66,7 @@ const LoginPage = () => {
       .then(() => {
         toast("Please check yor email");
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(() => {});
   };
 
   return (
