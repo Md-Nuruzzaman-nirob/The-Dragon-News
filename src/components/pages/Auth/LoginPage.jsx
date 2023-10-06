@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../shared/NavBar/NavBar";
 import SocialLogin from "../shared/SocialLogin/SocialLogin";
 import useAuthContext from "../../../hooks/useAuthContext";
@@ -17,6 +17,8 @@ const LoginPage = () => {
 
   // context
   const { loginUser } = useAuthContext();
+  // location
+  const location = useLocation();
   // navigate
   const navigate = useNavigate();
 
@@ -29,13 +31,11 @@ const LoginPage = () => {
     setPasswordError("");
 
     loginUser(email, password)
-      .then((result) => {
-        console.log(result);
+      .then(() => {
         toast.success("Login successfully");
-        navigate("/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
-        console.log(error);
         if (
           error.message === "Firebase: Error (auth/invalid-login-credentials)."
         ) {

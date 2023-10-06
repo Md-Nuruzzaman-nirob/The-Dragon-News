@@ -17,7 +17,7 @@ const LeftSideNav = () => {
       {categories.map((category) => {
         return (
           <Link
-            className={`block text-lg font-medium px-12 py-4 ${({
+            className={`block text-lg font-medium px-10 py-4 ${({
               isActive,
               isPending,
             }) => (isPending ? "pending" : isActive ? "bg-[#E7E7E7]" : "")}`}

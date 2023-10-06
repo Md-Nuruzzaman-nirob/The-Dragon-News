@@ -4,6 +4,8 @@ import HomePage from "../components/pages/Home/HomePage";
 import LoginPage from "../components/pages/Auth/LoginPage";
 import RegisterPage from "../components/pages/Auth/RegisterPage";
 import ErrorPage from "../components/pages/Error/ErrorPage";
+import NewsPage from "../components/pages/shared/NewsPage/NewsPage";
+import PrivetRouter from "./PrivetRouter";
 
 const AppRouter = createBrowserRouter([
   {
@@ -14,6 +16,7 @@ const AppRouter = createBrowserRouter([
       {
         path: "/",
         element: <HomePage></HomePage>,
+        loader: () => fetch("/public/json/news.json"),
       },
       {
         path: "/login",
@@ -22,6 +25,16 @@ const AppRouter = createBrowserRouter([
       {
         path: "/register",
         element: <RegisterPage></RegisterPage>,
+      },
+      {
+        path: "/news/:id",
+        element: (
+          <PrivetRouter>
+            {" "}
+            <NewsPage></NewsPage>
+          </PrivetRouter>
+        ),
+        loader: () => fetch("/public/json/news.json"),
       },
     ],
   },

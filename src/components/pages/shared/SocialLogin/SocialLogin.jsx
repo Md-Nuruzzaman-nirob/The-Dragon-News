@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAuthContext from "../../../../hooks/useAuthContext";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import toast from "react-hot-toast";
@@ -7,6 +7,8 @@ const SocialLogin = () => {
   // context
   const { googleLogin, githubLogin } = useAuthContext();
 
+  // location
+  const location = useLocation();
   // use Navigate
   const navigate = useNavigate();
 
@@ -14,7 +16,7 @@ const SocialLogin = () => {
     socialLogin()
       .then(() => {
         toast.success("Sign In successfully");
-        navigate("/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error);

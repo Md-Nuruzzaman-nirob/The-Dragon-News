@@ -25,34 +25,41 @@ const githubProvider = new GithubAuthProvider();
 const AuthContext = ({ children }) => {
   // use state
   const [user, setUser] = useState(null);
+  const [loader, setLoader] = useState(true);
 
   // google
   const googleLogin = () => {
+    setLoader(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   // github
   const githubLogin = () => {
+    setLoader(true);
     return signInWithPopup(auth, githubProvider);
   };
 
   //   create user
   const createUser = (email, password) => {
+    setLoader(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   //login user
   const loginUser = (email, password) => {
+    setLoader(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   //logout
   const logout = () => {
+    setLoader(true);
     return signOut(auth);
   };
 
   // delete user
   const deleteTheUser = () => {
+    setLoader(true);
     return deleteUser(auth.currentUser);
   };
 
@@ -60,6 +67,7 @@ const AuthContext = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
+      setLoader(false);
     });
 
     return () => {
@@ -76,9 +84,8 @@ const AuthContext = ({ children }) => {
     logout,
     deleteTheUser,
     user,
+    loader,
   };
-  console.log(user);
-
   return (
     <AuthContextAPI.Provider value={authentication}>
       {children}

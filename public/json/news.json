@@ -351,7 +351,7 @@
     {
       "_id": "374df11ae3d9b8b9ce21f4dc53f59b85",
       "others_info": {
-        "is_todays_pick": false,
+        "is_todays_pick": true,
         "is_trending": true
       },
       "category_id": "1",
@@ -427,7 +427,7 @@
     {
       "_id": "7f5b80c1cdd4df0111918883eae07349",
       "others_info": {
-        "is_todays_pick": false,
+        "is_todays_pick": true,
         "is_trending": true
       },
       "category_id": "3",
@@ -486,7 +486,7 @@
     {
       "_id": "61f9ce168f7b15aadecb1d1fc80c72f7",
       "others_info": {
-        "is_todays_pick": false,
+        "is_todays_pick": true,
         "is_trending": false
       },
       "category_id": "4",

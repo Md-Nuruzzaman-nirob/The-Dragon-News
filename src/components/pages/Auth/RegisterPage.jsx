@@ -91,9 +91,7 @@ const RegisterPage = () => {
           photoURL: url,
         })
           .then(() => {})
-          .catch((error) => {
-            console.log(error);
-          });
+          .catch(() => {});
 
         //   Email verification
         sendEmailVerification(auth.currentUser).then(() => {

@@ -3,7 +3,7 @@ import avatar from "../../../../assets/user.png";
 import useAuthContext from "../../../../hooks/useAuthContext";
 
 const NavBar = () => {
-  const { logout } = useAuthContext();
+  const { logout, user } = useAuthContext();
   const handleClick = () => {
     logout();
   };
@@ -64,15 +64,26 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <button onClick={handleClick}>
-            <img className="w-8 lg:w-12 mr-2 lg:mr-3" src={avatar} alt="" />
-          </button>
-          <Link
-            className="btn btn-xs md:btn-sm lg:btn-md bg-black hover:bg-black text-white lg:text-lg font-medium px-4 md:px-5 lg:px-8 lg:py-2 rounded"
-            to={"/login"}
-          >
-            Login
-          </Link>
+          <img
+            className="w-8 lg:w-12 mr-2 lg:mr-3 rounded-full"
+            src={user?.photoURL ? user.photoURL : avatar}
+            alt=""
+          />
+          {!user ? (
+            <Link
+              className="btn btn-xs md:btn-sm lg:btn-md bg-black hover:bg-black text-white lg:text-lg font-medium px-4 md:px-5 lg:px-8 lg:py-2 rounded"
+              to={"/login"}
+            >
+              Login
+            </Link>
+          ) : (
+            <button
+              onClick={handleClick}
+              className="btn btn-xs md:btn-sm lg:btn-md bg-black hover:bg-black text-white lg:text-lg font-medium px-4 md:px-5 lg:px-8 lg:py-2 rounded"
+            >
+              Logout
+            </button>
+          )}
         </div>
       </div>
       <div>
@@ -80,18 +91,29 @@ const NavBar = () => {
         <div className="md:hidden mb-5">
           <ul className="flex justify-end items-center gap-4 text-[10px]">
             {navLinks}
-            <li className="flex items-center gap-2 ml-5 ">
+            <li className="flex items-center gap-2 ml-5 rounded-full">
               <Link>
-                <button onClick={handleClick}>
-                  <img className="w-7" src={avatar} alt="" />
+                <img
+                  className="w-7"
+                  src={user?.photoURL ? user.photoURL : avatar}
+                  alt=""
+                />
+              </Link>
+              {!user ? (
+                <Link
+                  className="btn btn-neutral btn-xs text-white rounded"
+                  to={"/login"}
+                >
+                  Login
+                </Link>
+              ) : (
+                <button
+                  onClick={handleClick}
+                  className="btn btn-neutral btn-xs text-white rounded"
+                >
+                  Logout
                 </button>
-              </Link>
-              <Link
-                className="btn btn-neutral btn-xs text-white rounded"
-                to={"/login"}
-              >
-                Login
-              </Link>
+              )}
             </li>
           </ul>
         </div>
